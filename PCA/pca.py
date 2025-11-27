@@ -3,7 +3,7 @@ import scipy
 import matplotlib.pyplot as plt
 
 
-class PCA:
+class myPCA:
 
     def __init__(self, n_components : int) -> None:
         self.n_components = n_components
@@ -31,7 +31,7 @@ class PCA:
         return np.dot(X_centered, self.components)
     
     def fit_transform(self, X : np.array):
-        
+
         self.fit(X)
         return self.transform(X)
 
