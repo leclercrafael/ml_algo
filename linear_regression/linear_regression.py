@@ -4,9 +4,9 @@ import matplotlib.pyplot as plt
 
 class myLinearRegression():
 
-    def __init__(self):
-        #self.learning_rate = learning_rate
-        #self.n_iter = n_iter
+    def __init__(self, learning_rate : float = 0.01, n_iter : int = 10000):
+        self.learning_rate = learning_rate
+        self.n_iter = n_iter
         pass
 
     def prediction(self, x : np.array, w : np.array, b : float) -> np.array :
@@ -38,15 +38,13 @@ class myLinearRegression():
         self.w = np.array([1 for i in range(len(self.x[0]))])
         self.b = 0
 
-        N_ITER = 1000
-
-        for i in range (N_ITER):
+        for i in range (self.n_iter):
 
             dmse_db = self.dmse_db(self.x, self.y, self.w, self.b)
             dmse_dw = self.dmse_dw(self.x, self.y, self.w, self.b)
 
-            self.b = self.b -0.01*dmse_db
-            self.w = self.w -0.01*dmse_dw
+            self.b = self.b -self.learning_rate*dmse_db
+            self.w = self.w -self.learning_rate*dmse_dw
 
             current_cost = self.mse(self.x, self.y, self.w, self.b)
             self.cost_history.append(current_cost)
@@ -59,7 +57,16 @@ class myLinearRegression():
         plt.ylabel("Coût")
         plt.show()
 
-    @attr
+    @property
+
+    def coef(self) -> None :
+        print (f'Weights w : {self.w}')
+        print (f'Biais b : {self.b}')
+
+    @property
+
+    def final_mse(self):
+        return self.mse(self.x, self.y, self.w, self.b)
 
 
             
