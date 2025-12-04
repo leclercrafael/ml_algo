@@ -2,7 +2,7 @@ import numpy as np
 import scipy
 import matplotlib.pyplot as plt
 
-class myLinearRegression():
+class myLinearRegression:
 
     def __init__(self, learning_rate : float = 0.01, n_iter : int = 10000):
         self.learning_rate = learning_rate
