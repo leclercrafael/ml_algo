@@ -7,7 +7,6 @@ class myLinearRegression:
     def __init__(self, learning_rate : float = 0.01, n_iter : int = 10000):
         self.learning_rate = learning_rate
         self.n_iter = n_iter
-        pass
 
     def prediction(self, x : np.array, w : np.array, b : float) -> np.array :
         return (np.dot(x,w) + b)
